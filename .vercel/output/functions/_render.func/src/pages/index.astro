@@ -1,0 +1,79 @@
+---
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+
+const response = await fetch("https://graphql.datocms.com/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Authorization: `Bearer ${import.meta.env.DATOCMS_API_KEY}`,
+  },
+  body: JSON.stringify({
+    query: `query Homepage {
+			home {
+			  title
+			  image {
+         		url
+          		alt
+       		}
+			}
+		  }
+		`,
+  }),
+});
+
+const json = await response.json();
+const data = json.data.home;
+---
+
+<style is:global>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  /* Full-screen background image */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /*prettier-ignore*/
+    /* background-image: url(`${data.image.url}`); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Nav-style h1 overlay */
+  .hero-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+</style>
+<Layout>
+  <div class="hero" style={`background-image: url('${data.image.url}')`}>
+    <h1 class="hero-nav">{data.title}</h1>
+  </div>
+</Layout>
+<!-- <style>
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+</style> -->

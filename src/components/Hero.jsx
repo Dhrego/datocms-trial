@@ -1,20 +1,39 @@
 import "../components/Hero.css";
 // import Navbar from "../components/Navbar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Hero({ data, navlinks }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [disableTransition, setDisableTransition] = useState(false);
 
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 720);
     };
 
     checkIfMobile();
     window.addEventListener("resize", checkIfMobile);
 
     return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 720) {
+        setDisableTransition(true);
+        setIsOpen(false);
+
+        requestAnimationFrame(() => {
+          setDisableTransition(false);
+        });
+
+        console.log("from here");
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -50,6 +69,7 @@ export default function Hero({ data, navlinks }) {
           </ul>
         </div>
       </nav> */}
+
       <nav className="hero-nav">
         <div className="nav-container">
           <div className="logo">
@@ -60,14 +80,17 @@ export default function Hero({ data, navlinks }) {
             onClick={() => {
               toggleMenu();
             }}
-            aria-label="Toggle menu"
           >
             <span></span>
             <span></span>
             <span></span>
           </button>
 
-          <ul className={`navlinks ${isOpen ? "open" : ""}`}>
+          <ul
+            className={`navlinks ${isOpen ? "open" : ""} ${
+              disableTransition ? "no-transition" : ""
+            }`}
+          >
             {navlinks.map((link) => (
               <li key={link.linkId} onClick={() => isMobile && toggleMenu()}>
                 <a
@@ -88,7 +111,9 @@ export default function Hero({ data, navlinks }) {
         <div className="col">
           <div className="hero-description">
             <h1>{data.title}</h1>
-            <p>{data.subtitle}</p>
+            {/* <p>{data.subtitle}</p> */}
+            <p dangerouslySetInnerHTML={{ __html: data.subtitle }} />
+
             <a href={data.link}>{data.cta}</a>
           </div>
         </div>

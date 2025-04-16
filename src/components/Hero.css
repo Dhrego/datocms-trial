@@ -150,7 +150,6 @@ a.navlink {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 10px;
   z-index: 1001;
 }
 
@@ -161,6 +160,21 @@ a.navlink {
   background: white;
   margin: 5px 0;
   transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1400px) {
+  main {
+    padding: 182px 2rem 0;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .hero-description {
+    width: 50%;
+  }
+  .col {
+    padding: 0;
+  }
 }
 
 @media (max-width: 720px) {
@@ -181,7 +195,7 @@ a.navlink {
   }
 
   .hero-nav {
-    padding: 1rem 32px;
+    padding: 1rem 20px;
   }
 
   .hero-nav ul {
@@ -210,6 +224,7 @@ a.navlink {
   .navlinks.open {
     transform: scaleY(1);
     pointer-events: all;
+
     /* clip-path: circle(150% at 50% 50%);
     -webkit-clip-path: circle(150% at 50% 50%);
     width: 100%; */
@@ -248,14 +263,27 @@ a.navlink {
     padding: 0;
     border-radius: 0;
   }
+
+  .navlinks.no-transition {
+    transition: none !important;
+  }
+
+  .navlinks.no-transition li {
+    transition: none !important;
+  }
+
   main {
-    padding: 114px 2rem 0;
+    padding: 114px 20px 0;
     gap: 2rem;
   }
 
   .hero-description {
     gap: 30px;
     width: 100%;
+  }
+
+  .hero-description a {
+    padding: 16px 32px;
   }
   /* ul.navlinks {
     display: none;
@@ -270,20 +298,5 @@ a.navlink {
     overflow: hidden;
     justify-content: center;
     align-items: center;
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  main {
-    padding: 182px 2rem 0;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .hero-description {
-    width: 50%;
-  }
-  .col {
-    padding: 0;
   }
 }

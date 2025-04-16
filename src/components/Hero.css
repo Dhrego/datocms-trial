@@ -304,6 +304,7 @@ a.navlink {
   main {
     padding: 114px 20px 0;
     gap: 2rem;
+    display: block;
   }
 
   .hero-description {
@@ -319,6 +320,9 @@ a.navlink {
   } */
   .col {
     padding: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(calc(-50% - 38px));
   }
   .col.down {
     width: 100%;
@@ -327,5 +331,9 @@ a.navlink {
     overflow: hidden;
     justify-content: center;
     align-items: center;
+  }
+
+  .col.down {
+    display: none !important;
   }
 }

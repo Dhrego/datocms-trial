@@ -40,9 +40,9 @@ export default function ProductShowcase({ products }) {
             <motion.div
               key={activeProduct.name + "-info"}
               className="info left"
-              initial={{ opacity: 0, x: isMobile ? 0 : -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: isMobile ? 0 : -30 }}
+              initial={{ opacity: 0, y: isMobile ? 0 : -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: isMobile ? 0 : -30 }}
               transition={{ duration: 0.4 }}
             >
               <span>{activeProduct.name}</span>
@@ -57,9 +57,9 @@ export default function ProductShowcase({ products }) {
             <motion.div
               key={activeProduct.name + "-right"}
               className="info right"
-              initial={{ opacity: 0, x: isMobile ? 0 : 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: isMobile ? 0 : 30 }}
+              initial={{ opacity: 0, y: isMobile ? 0 : -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: isMobile ? 0 : -30 }}
               transition={{ duration: 0.4 }}
             >
               <div className="specs">

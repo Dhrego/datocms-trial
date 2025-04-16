@@ -122,7 +122,7 @@ export default function Hero({ data, navlinks }) {
           {/* <div className="dark">placeholder</div> */}
           <video
             className="dark"
-            src="km_industry_range_sweepers.mp4"
+            src={data.video.url}
             autoPlay
             muted
             loop

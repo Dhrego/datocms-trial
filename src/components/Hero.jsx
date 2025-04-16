@@ -48,6 +48,7 @@ export default function Hero({ data, navlinks }) {
   };
   return (
     <div className="hero" style={{ backgroundImage: `url(${data.image.url})` }}>
+      <div className="overlay-1"></div>
       {/* <nav className="hero-nav">
         <div className="nav-container">
           <div className="logo">

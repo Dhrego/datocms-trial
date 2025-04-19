@@ -1,9 +1,26 @@
 @font-face {
-    font-family: 'Neue Haas Grotesk Display Pro';
-    src: url('NeueHaasDisplay-Roman.woff2') format('woff2'),
-        url('NeueHaasDisplay-Roman.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Neue Haas Grotesk Display Pro";
+  src: url("NeueHaasDisplay-Roman.woff2") format("woff2"),
+    url("NeueHaasDisplay-Roman.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
+@font-face {
+  font-family: "BC Novatica CYR";
+  src: url("BCNovaticaCYR-Regular.woff2") format("woff2"),
+    url("BCNovaticaCYR-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NeueHaasUnicaW1G";
+  src: url("NeueHaasUnicaW1G-Regular.woff2") format("woff2"),
+    url("NeueHaasUnicaW1G-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

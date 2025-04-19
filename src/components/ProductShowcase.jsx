@@ -1,6 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, act } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
 import "./ProductShowcase.css";
+// import ProductTab from "./ProductTab";
+import ProductTabs from "./ProductTabs";
 
 export default function ProductShowcase({ products }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -91,38 +94,18 @@ export default function ProductShowcase({ products }) {
               </a>
             </motion.div>
           </AnimatePresence>
-
-          <div className="tabs">
-            {products.map((product, i) => (
-              <div
-                key={i}
-                className={`tab ${i === activeIndex ? "active" : ""}`}
-                onClick={() => setActiveIndex(i)}
-              >
-                <img src={product.tabImageUrl} alt={product.name} />
-                <div className="description">
-                  <p>{product.name}</p>
-                  <span>{product.cleaningCapacity}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProductTabs
+            products={products}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+          />
         </div>
-        <div className="tabs mobile">
-          {products.map((product, i) => (
-            <div
-              key={i}
-              className={`tab ${i === activeIndex ? "active" : ""}`}
-              onClick={() => setActiveIndex(i)}
-            >
-              <img src={product.tabImageUrl} alt={product.name} />
-              <div className="description">
-                <p>{product.name}</p>
-                <span>{product.cleaningCapacity}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ProductTabs
+          products={products}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+          variant="mobile"
+        />
       </div>
     </div>
   );

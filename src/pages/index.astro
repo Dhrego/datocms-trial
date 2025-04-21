@@ -15,30 +15,39 @@ const response = await fetch("https://graphql.datocms.com/", {
   },
   body: JSON.stringify({
     query: `query Homepage {
-	    home{
-        logo{
+      home {
+        logo {
           url
           alt
         }
         cta
         link
         subtitle
-			  title
-			  image {
-         		url
-          		alt
-       	}
-        video{
+        title
+        image {
           url
           alt
         }
-			}
-      allNavlinks(orderBy: linkId_ASC){
+        video {
+          video {
+            alt
+            blurUpThumb
+            blurhash
+            duration
+            framerate
+            mp4Url
+            thumbhash
+            title
+          }
+          filename
+        }
+      }
+      allNavlinks(orderBy: linkId_ASC) {
         linkId
         title
         slug
       }
-      allTabs(orderBy: tabId_ASC){
+      allTabs(orderBy: tabId_ASC) {
         tabId
         title
         imageurl
@@ -46,19 +55,19 @@ const response = await fetch("https://graphql.datocms.com/", {
       }
       allProducts(orderBy: _createdAt_ASC) {
         name
-        tabImage{
+        tabImage {
           url
           alt
         }
         description
-        imageurl{
+        imageurl {
           url
           alt
         }
         cleaningcap
         width
         autonomy
-      }     
+      }
   }
 		`,
   }),

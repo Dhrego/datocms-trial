@@ -120,13 +120,27 @@ export default function Hero({ data, navlinks }) {
         </div>
         <div className="col down">
           {/* <div className="dark">placeholder</div> */}
+          {/* <video
+            className="dark"
+            src={data.video.video.mp4Url}
+            autoPlay
+            muted
+            loop
+            poster={data.video.video.blurUpThumb}
+            playsInline
+          /> */}
           <video
             className="dark"
-            src={data.video.url}
+            src={data.video.video.mp4Url}
             autoPlay
             muted
             loop
             playsInline
+            poster={data.video.video.blurUpThumb}
+            controls
+            controlsList="nodownload"
+            preload="auto"
+            disablePictureInPicture
           />
         </div>
       </main>
